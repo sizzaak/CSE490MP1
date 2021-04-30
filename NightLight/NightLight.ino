@@ -68,16 +68,12 @@ void loop() {
   if (_modeButton.isClicked()) {
     if (_mode == 0) {
       _mode = 1;
-      initMode1();
-      exitMode0();
     } else if (_mode == 1) {
       _mode = 2;
       initMode2();
-      exitMode1();
     } else {
       _mode = 0;
       initMode0();
-      exitMode2();
     }
   }
   if (_mode == 0) {
@@ -116,23 +112,11 @@ void initMode0() {
   _hueStep = HUE_STEP_START;
 }
 
-void exitMode0() {
-  
-}
-
 void runMode1() {
   int dialVal = analogRead(TIME_DIAL_PIN);
   int lightLevel = calculateLight(dialVal);
   updateSky(lightLevel);
   delay(50);
-}
-
-void initMode1() {
-  
-}
-
-void exitMode1() {
-  
 }
 
 void runMode2() {
@@ -163,10 +147,6 @@ void initMode2() {
   digitalWrite(TRIPLE_STAR_PIN, LOW);
   digitalWrite(RIGHT_STAR_PIN, LOW);
   digitalWrite(LEFT_STAR_PIN, LOW);
-}
-
-void exitMode2() {
-  
 }
 
 void setRGB(int red, int green, int blue)
